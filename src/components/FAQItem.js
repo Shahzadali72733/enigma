@@ -13,14 +13,15 @@ export default function FAQItem({ faq, isOpen, onToggle }) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
     >
       <button className={styles.faqQuestion} onClick={onToggle}>
         <span>{isArabic ? faq.questionAr : faq.questionEn}</span>
         <motion.i
-          className="bi bi-chevron-down"
-          animate={{ rotate: isOpen ? 180 : 0 }}
+          className="bi bi-plus-lg"
+          animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3 }}
-        ></motion.i>
+        />
       </button>
       <AnimatePresence>
         {isOpen && (

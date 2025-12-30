@@ -11,6 +11,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [moreDropdown, setMoreDropdown] = useState(false);
   const [langDropdown, setLangDropdown] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, t, isArabic } = useLanguage();
 
   useEffect(() => {
@@ -44,112 +45,108 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
-      <nav className="navbar navbar-expand-lg navbar-dark">
+      {/* Top Row */}
+      <div className={styles.topRow}>
         <div className="container">
-          {/* Book Now Button */}
-          <Link href="/contact" className={`btn btn-gold ${styles.bookBtn}`}>
-            {t('bookNow')}
-          </Link>
+          <div className={styles.topRowContent}>
+            {/* Book Now Button */}
+            <Link href="/contact" className={`btn btn-gold ${styles.bookBtn}`}>
+              {t('bookNow')}
+            </Link>
 
-          {/* Logo */}
-          <Link href="/" className={`navbar-brand mx-auto ${styles.logo}`}>
-            <div className={styles.logoText}>
-              <span className={styles.logoMain}>ENI</span>
-              <span className={styles.logoIcon}>G</span>
-              <span className={styles.logoMain}>MA</span>
-            </div>
-            <div className={styles.logoSubtext}>
-              <span>ESCAPE</span>
-              <span className={styles.keyIcon}>🔑</span>
-              <span>GAMES</span>
-            </div>
-          </Link>
+            {/* Logo - Center */}
+            <Link href="/" className={styles.logo}>
+              <div className={styles.logoWrapper}>
+                <img src='/logo-enigma-yellow.png' alt='Enigma Logo' width='180' height='70' />
+              </div>
+            </Link>
 
-          {/* Language Selector */}
-          <div 
-            className={styles.langSelector}
-            onClick={() => setLangDropdown(!langDropdown)}
-            onMouseLeave={() => setLangDropdown(false)}
-          >
-            <span className={styles.flag}>{language === 'en' ? '🇬🇧' : '🇸🇦'}</span>
-            <span>{language === 'en' ? 'ENGLISH' : 'العربية'}</span>
-            <i className={`bi bi-chevron-down ${styles.chevron} ${langDropdown ? styles.rotated : ''}`}></i>
-            
-            {/* Language Dropdown */}
-            <div className={`${styles.langDropdown} ${langDropdown ? styles.show : ''}`}>
-              <button 
-                className={`${styles.langOption} ${language === 'en' ? styles.activeLang : ''}`}
-                onClick={(e) => { e.stopPropagation(); handleLanguageChange('en'); }}
-              >
-                <span className={styles.flag}>🇬🇧</span>
-                <span>ENGLISH</span>
-              </button>
-              <button 
-                className={`${styles.langOption} ${language === 'ar' ? styles.activeLang : ''}`}
-                onClick={(e) => { e.stopPropagation(); handleLanguageChange('ar'); }}
-              >
-                <span className={styles.flag}>🇸🇦</span>
-                <span>العربية</span>
-              </button>
+            {/* Language Selector */}
+            <div
+              className={styles.langSelector}
+              onClick={() => setLangDropdown(!langDropdown)}
+              onMouseLeave={() => setLangDropdown(false)}
+            >
+              <div className={styles.flagsContainer}>
+                <span className={`${styles.flag} ${language === 'en' ? styles.activeFlag : ''}`}>🇺🇸</span>
+                <span className={`${styles.flag} ${language === 'ar' ? styles.activeFlag : ''}`}>🇸🇦</span>
+              </div>
+              <i className={`bi bi-chevron-down ${styles.chevron} ${langDropdown ? styles.rotated : ''}`}></i>
+
+              {/* Language Dropdown */}
+              <div className={`${styles.langDropdown} ${langDropdown ? styles.show : ''}`}>
+                <button
+                  className={`${styles.langOption} ${language === 'en' ? styles.activeLang : ''}`}
+                  onClick={(e) => { e.stopPropagation(); handleLanguageChange('en'); }}
+                >
+                  <span className={styles.flag}>🇺🇸</span>
+                  <span>ENGLISH</span>
+                </button>
+                <button
+                  className={`${styles.langOption} ${language === 'ar' ? styles.activeLang : ''}`}
+                  onClick={(e) => { e.stopPropagation(); handleLanguageChange('ar'); }}
+                >
+                  <span className={styles.flag}>🇸🇦</span>
+                  <span>العربية</span>
+                </button>
+              </div>
             </div>
+
+            {/* Mobile Toggle */}
+            <button
+              className={styles.mobileToggle}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <i className={`bi ${mobileMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+            </button>
           </div>
+        </div>
+      </div>
 
-          {/* Mobile Toggle */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+      {/* Bottom Row - Navigation */}
+      <nav className={`${styles.bottomRow} ${mobileMenuOpen ? styles.mobileOpen : ''}`}>
+        <div className="container">
+          <ul className={styles.navLinks}>
+            {navLinks.map((link) => (
+              <li key={link.href} className={styles.navItem}>
+                <Link
+                  href={link.href}
+                  className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
 
-          {/* Navigation Links */}
-          <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul className={`navbar-nav ${styles.navLinks}`}>
-              {navLinks.map((link) => (
-                <li key={link.href} className="nav-item">
+            {/* More Dropdown */}
+            <li
+              className={`${styles.navItem} ${styles.dropdown}`}
+              onMouseEnter={() => setMoreDropdown(true)}
+              onMouseLeave={() => setMoreDropdown(false)}
+            >
+              <Link
+                href="/more"
+                className={`${styles.navLink} ${isMoreActive ? styles.active : ''}`}
+              >
+                {t('more')}
+                <i className="bi bi-chevron-down ms-1"></i>
+              </Link>
+
+              <div className={`${styles.dropdownMenu} ${moreDropdown ? styles.show : ''}`}>
+                {moreLinks.map((link) => (
                   <Link
+                    key={link.href}
                     href={link.href}
-                    className={`nav-link ${styles.navLink} ${
-                      pathname === link.href ? styles.active : ''
-                    }`}
+                    className={`${styles.dropdownItem} ${pathname === link.href ? styles.activeItem : ''}`}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {link.label}
                   </Link>
-                </li>
-              ))}
-              
-              {/* More Dropdown */}
-              <li 
-                className={`nav-item ${styles.dropdown}`}
-                onMouseEnter={() => setMoreDropdown(true)}
-                onMouseLeave={() => setMoreDropdown(false)}
-              >
-                <Link
-                  href="/more"
-                  className={`nav-link ${styles.navLink} ${isMoreActive ? styles.active : ''}`}
-                >
-                  {t('more')}
-                  <i className="bi bi-chevron-down ms-1"></i>
-                </Link>
-                
-                <div className={`${styles.dropdownMenu} ${moreDropdown ? styles.show : ''}`}>
-                  {moreLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={`${styles.dropdownItem} ${
-                        pathname === link.href ? styles.activeItem : ''
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
-                </div>
-              </li>
-            </ul>
-          </div>
+                ))}
+              </div>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>

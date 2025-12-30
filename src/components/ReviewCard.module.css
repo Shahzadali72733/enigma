@@ -1,7 +1,7 @@
 .reviewCard {
   background: rgba(26, 26, 26, 0.9);
-  border: 1px solid var(--gold-primary);
-  border-radius: 10px;
+  border: 1px solid var(--dark-border);
+  border-radius: 15px;
   padding: 30px;
   transition: all 0.4s ease;
   position: relative;
@@ -10,11 +10,16 @@
   flex-direction: column;
 }
 
+.reviewCard:hover {
+  border-color: var(--gold-primary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
 .quoteIcon {
   font-family: Georgia, serif;
   font-size: 4rem;
   color: var(--gold-primary);
-  opacity: 0.5;
+  opacity: 0.3;
   line-height: 1;
   margin-bottom: -20px;
 }
@@ -23,7 +28,7 @@
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 25px;
   flex-grow: 1;
 }
@@ -45,8 +50,22 @@
 
 .authorName {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--gold-primary);
+}
+
+@media (max-width: 768px) {
+  .reviewCard {
+    padding: 25px;
+  }
+
+  .quoteIcon {
+    font-size: 3rem;
+  }
+
+  .reviewText {
+    font-size: 1rem;
+  }
 }
 

@@ -1,18 +1,18 @@
 .faqItem {
   background: rgba(26, 26, 26, 0.8);
-  border: 1px solid var(--gold-primary);
-  border-radius: 5px;
+  border: 1px solid var(--dark-border);
+  border-radius: 10px;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .faqItem:hover {
-  box-shadow: 0 5px 20px rgba(212, 168, 75, 0.1);
+  border-color: rgba(212, 168, 75, 0.3);
 }
 
 .faqItem.active {
-  border-color: var(--gold-light);
-  box-shadow: 0 5px 30px rgba(212, 168, 75, 0.2);
+  border-color: var(--gold-primary);
+  box-shadow: 0 5px 20px rgba(212, 168, 75, 0.15);
 }
 
 .faqQuestion {
@@ -34,12 +34,12 @@
 }
 
 .faqQuestion:hover {
-  background: rgba(212, 168, 75, 0.1);
+  background: rgba(212, 168, 75, 0.05);
 }
 
 .faqQuestion span {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--gold-primary);
   text-transform: uppercase;
@@ -63,5 +63,21 @@
   font-size: 1rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .faqQuestion {
+    padding: 15px 20px;
+  }
+
+  .faqQuestion span {
+    font-size: 0.9rem;
+  }
+
+  .faqAnswer p {
+    padding: 0 20px 20px;
+    font-size: 0.95rem;
+  }
 }
 

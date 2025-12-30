@@ -6,10 +6,10 @@ import { useLanguage } from '@/context/LanguageContext';
 import styles from './EventCard.module.css';
 
 const cardVariants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
-    x: 0,
+    y: 0,
     transition: {
       duration: 0.6,
       ease: 'easeOut',
@@ -24,10 +24,7 @@ export default function EventCard({ event }) {
     <motion.div
       className={styles.eventCard}
       variants={cardVariants}
-      whileHover={{
-        scale: 1.02,
-        boxShadow: '0 30px 60px rgba(0, 0, 0, 0.4)',
-      }}
+      whileHover={{ scale: 1.02, y: -5 }}
     >
       <div className={styles.eventImageWrapper}>
         <img
@@ -36,18 +33,20 @@ export default function EventCard({ event }) {
           className={styles.eventImage}
         />
         <div className={styles.eventOverlay}>
-          <Link href="/contact" className="btn btn-gold">
-            {t('bookNow')}
-          </Link>
+          <h3 className={styles.eventTitle}>
+            {isArabic ? event.titleAr : event.titleEn}
+          </h3>
         </div>
       </div>
       <div className={styles.eventContent}>
-        <h3 className={styles.eventTitle}>
-          {isArabic ? event.titleAr : event.titleEn}
-        </h3>
         <p className={styles.eventDescription}>
           {isArabic ? event.descriptionAr : event.descriptionEn}
         </p>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link href="/contact" className="btn btn-outline-gold">
+            {t('bookNow')}
+          </Link>
+        </motion.div>
       </div>
     </motion.div>
   );

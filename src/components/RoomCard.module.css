@@ -1,10 +1,11 @@
 .roomCard {
-  background: rgba(26, 26, 26, 0.9);
+  background: rgba(26, 26, 26, 0.95);
   border: 1px solid var(--dark-border);
   border-radius: 15px;
   overflow: hidden;
   transition: all 0.4s ease;
   position: relative;
+  margin-top: 30px;
 }
 
 .roomCard::before {
@@ -25,11 +26,13 @@
 
 .roomCard:hover {
   border-color: var(--gold-primary);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  transform: translateY(-5px);
 }
 
 .roomImageWrapper {
   position: relative;
-  height: 200px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -55,7 +58,7 @@
 
 .roomName {
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: var(--gold-primary);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -72,7 +75,7 @@
 }
 
 .roomNameAr {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #ffffff;
   opacity: 0.9;
 }
@@ -95,26 +98,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 20px 25px;
   background: rgba(15, 15, 15, 0.95);
 }
 
 .roomInfo {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 18px;
 }
 
 .roomInfo span {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
+  gap: 7px;
+  font-size: 0.92rem;
   color: var(--gold-primary);
 }
 
 .roomInfo i {
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 .difficulty {
@@ -126,7 +129,7 @@
 }
 
 .difficulty span {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   display: block;
   margin-bottom: 5px;
@@ -137,7 +140,7 @@
 }
 
 .difficultyStars i {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   margin-left: 3px;
 }
 
@@ -147,14 +150,41 @@
 }
 
 @media (max-width: 768px) {
+  .roomImageWrapper {
+    height: 180px;
+  }
+
   .roomDetails {
     flex-direction: column;
     gap: 15px;
     align-items: flex-start;
   }
 
+  .roomInfo {
+    gap: 12px;
+  }
+
   .difficulty {
     text-align: left;
+    width: 100%;
+  }
+
+  [dir="rtl"] .difficulty {
+    text-align: right;
   }
 }
 
+@media (max-width: 576px) {
+  .roomImageWrapper {
+    height: 160px;
+  }
+
+  .roomName {
+    font-size: 1.4rem;
+  }
+
+  .roomBookBtn {
+    font-size: 0.65rem;
+    padding: 8px 18px;
+  }
+}

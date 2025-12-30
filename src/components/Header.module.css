@@ -4,9 +4,8 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 168, 75, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -15,10 +14,23 @@
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
 }
 
+/* Top Row */
+.topRow {
+  border-bottom: 1px solid rgba(212, 168, 75, 0.2);
+  padding: 15px 0;
+}
+
+.topRowContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .bookBtn {
   font-size: 0.75rem;
-  padding: 8px 20px;
+  padding: 10px 25px;
   animation: pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -30,78 +42,63 @@
   }
 }
 
+/* Logo - Center */
 .logo {
   text-decoration: none;
-  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   transition: transform 0.3s ease;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  transform: translateX(-50%) scale(1.05);
 }
 
-.logoText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.logoMain {
-  color: #ffffff;
-}
-
-.logoIcon {
-  color: var(--gold-primary);
-  margin: 0 2px;
-  position: relative;
-}
-
-.logoSubtext {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.7rem;
-  letter-spacing: 4px;
-  color: var(--gold-primary);
-  margin-top: -5px;
-}
-
-.keyIcon {
-  font-size: 1rem;
+.logoWrapper img {
+  display: block;
+  height: auto;
 }
 
 /* Language Selector */
 .langSelector {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: #ffffff;
   font-size: 0.85rem;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
   padding: 8px 12px;
   border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .langSelector:hover {
-  color: var(--gold-primary);
   background: rgba(212, 168, 75, 0.1);
 }
 
+.flagsContainer {
+  display: flex;
+  gap: 5px;
+}
+
 .flag {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.flag.activeFlag {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(212, 168, 75, 0.6));
 }
 
 .chevron {
   transition: transform 0.3s ease;
   font-size: 0.7rem;
+  color: var(--gold-primary);
 }
 
 .chevron.rotated {
@@ -112,7 +109,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  min-width: 150px;
+  min-width: 160px;
   background: rgba(20, 20, 20, 0.98);
   border: 1px solid rgba(212, 168, 75, 0.3);
   border-radius: 10px;
@@ -162,8 +159,35 @@
   font-size: 0.8rem;
 }
 
+/* Mobile Toggle */
+.mobileToggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: var(--gold-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  flex-shrink: 0;
+}
+
+/* Bottom Row - Navigation */
+.bottomRow {
+  padding: 12px 0;
+}
+
 .navLinks {
-  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  position: relative;
 }
 
 .navLink {
@@ -171,26 +195,28 @@
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #ffffff !important;
-  padding: 10px 20px !important;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 25px;
   transition: all 0.3s ease;
   position: relative;
+  display: block;
 }
 
 .navLink:hover {
-  color: var(--gold-primary) !important;
+  color: var(--gold-primary);
 }
 
 .navLink.active {
-  color: var(--gold-primary) !important;
+  color: var(--gold-primary);
 }
 
 .navLink.active::after {
   content: '';
   position: absolute;
-  bottom: 5px;
-  left: 20px;
-  right: 20px;
+  bottom: 0;
+  left: 25px;
+  right: 25px;
   height: 2px;
   background: var(--gold-primary);
 }
@@ -203,7 +229,8 @@
 .dropdownMenu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
   min-width: 200px;
   background: rgba(20, 20, 20, 0.98);
   border: 1px solid rgba(212, 168, 75, 0.3);
@@ -211,7 +238,6 @@
   padding: 10px 0;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
   transition: all 0.3s ease;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
@@ -219,7 +245,7 @@
 .dropdownMenu.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
 }
 
 .dropdownItem {
@@ -245,30 +271,28 @@
   background: rgba(212, 168, 75, 0.1);
 }
 
-/* RTL Support */
-[dir="rtl"] .navLink.active::after {
-  left: 20px;
-  right: 20px;
-}
-
-[dir="rtl"] .dropdownItem:hover {
-  padding-left: 25px;
-  padding-right: 30px;
-}
-
+/* Responsive */
 @media (max-width: 991px) {
+  .topRowContent {
+    position: relative;
+  }
+
   .logo {
     position: static;
-    margin: 0 auto;
+    transform: none;
   }
-  
-  .bookBtn {
-    order: -1;
+
+  .logo:hover {
+    transform: scale(1.05);
   }
-  
+
+  .logoWrapper img {
+    width: 140px;
+    height: auto;
+  }
+
   .langSelector {
     position: absolute;
-    top: 10px;
     right: 60px;
     font-size: 0.75rem;
     padding: 5px 8px;
@@ -278,29 +302,98 @@
     right: 0;
     min-width: 130px;
   }
-  
-  .navLinks {
-    text-align: center;
+
+  .mobileToggle {
+    display: block;
+  }
+
+  .bottomRow {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(15, 15, 15, 0.98);
+    border-top: 1px solid rgba(212, 168, 75, 0.2);
     padding: 20px 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .bottomRow.mobileOpen {
+    max-height: 400px;
+    opacity: 1;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .navLink {
+    display: block;
+    text-align: center;
+    padding: 15px 20px;
+  }
+
+  .navLink.active::after {
+    display: none;
   }
 
   .dropdown {
-    position: static;
+    width: 100%;
+    text-align: center;
   }
 
   .dropdownMenu {
     position: static;
-    opacity: 1;
-    visibility: visible;
     transform: none;
     background: rgba(26, 26, 26, 0.5);
     border: none;
     border-radius: 0;
-    margin-top: 10px;
-    display: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.3s ease;
   }
 
-  .dropdownMenu.show {
-    display: block;
+  .dropdown:hover .dropdownMenu {
+    max-height: 200px;
+    padding: 10px 0;
+  }
+
+  .dropdownItem {
+    text-align: center;
+  }
+
+  .dropdownItem:hover {
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .bookBtn {
+    font-size: 0.65rem;
+    padding: 8px 15px;
+  }
+
+  .logoWrapper img {
+    width: 120px;
+  }
+
+  .langSelector {
+    right: 50px;
+  }
+
+  .flagsContainer {
+    gap: 3px;
+  }
+
+  .flag {
+    font-size: 1.1rem;
   }
 }

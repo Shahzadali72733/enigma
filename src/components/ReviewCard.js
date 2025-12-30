@@ -5,13 +5,12 @@ import { useLanguage } from '@/context/LanguageContext';
 import styles from './ReviewCard.module.css';
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
       ease: 'easeOut',
     },
   },
@@ -24,12 +23,9 @@ export default function ReviewCard({ review }) {
     <motion.div
       className={styles.reviewCard}
       variants={cardVariants}
-      whileHover={{
-        y: -10,
-        boxShadow: '0 20px 40px rgba(212, 168, 75, 0.2)',
-      }}
+      whileHover={{ scale: 1.03, y: -5 }}
     >
-      <div className={styles.quoteIcon}>&ldquo;</div>
+      <div className={styles.quoteIcon}>&quot;</div>
       <p className={styles.reviewText}>
         {isArabic ? review.textAr : review.textEn}
       </p>
