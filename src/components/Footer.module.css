@@ -1,6 +1,24 @@
 .footer {
   background: linear-gradient(180deg, var(--dark-bg) 0%, #050505 100%);
   position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('https://picsum.photos/seed/footerbg/1920/600') center/cover no-repeat fixed;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .circuitDivider {
@@ -65,31 +83,6 @@
   height: auto;
 }
 
-.logoMain {
-  color: #ffffff;
-}
-
-.logoIcon {
-  color: var(--gold-primary);
-  margin: 0 3px;
-}
-
-.logoSubtext {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 5px;
-  color: var(--gold-primary);
-  margin-top: -5px;
-}
-
-.keyIcon {
-  font-size: 1.2rem;
-}
-
 .socialIcons {
   display: flex;
   justify-content: center;
@@ -137,8 +130,8 @@
 }
 
 @media (max-width: 768px) {
-  .logoText {
-    font-size: 2rem;
+  .logoText img {
+    width: 160px;
   }
 
   .socialIcons {

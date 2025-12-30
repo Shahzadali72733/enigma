@@ -13,6 +13,7 @@ export default function FAQPage() {
   const [openId, setOpenId] = useState(null);
 
   const toggleFAQ = (id) => {
+    // Only open one FAQ at a time - close current if clicking the same one
     setOpenId(openId === id ? null : id);
   };
 

@@ -6,8 +6,8 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  margin-top: -80px;
-  padding-top: 80px;
+  margin-top: -140px;
+  padding-top: 140px;
   overflow: hidden;
 }
 
@@ -101,17 +101,6 @@
   left: 20%;
 }
 
-.scrollIndicator {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--gold-primary);
-  font-size: 2rem;
-  z-index: 3;
-  cursor: pointer;
-}
-
 /* Hero Circuit Divider - White */
 .heroCircuitDivider {
   position: absolute;
@@ -182,20 +171,6 @@
   margin: 0 auto;
 }
 
-.roomCard {
-  background: rgba(26, 26, 26, 0.9);
-  border: 1px solid var(--dark-border);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 25px;
-  transition: all 0.4s ease;
-}
-
-.roomCard:hover {
-  border-color: var(--gold-primary);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
 .comingSoon {
   display: flex;
   align-items: center;
@@ -219,10 +194,50 @@
   text-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
 }
 
-/* Contact Section */
+/* Contact Section - Home Page Only */
 .contactSection {
   position: relative;
   overflow: hidden;
+  padding: 0 0 80px 0;
+}
+
+/* Contact Circuit Divider - Gold - Home Page Only */
+.contactCircuitDivider {
+  position: relative;
+  height: 60px;
+  margin-bottom: 60px;
+}
+
+.circuitLineGold {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 L100 30 L120 10 L300 10 L320 30 L500 30 L520 50 L700 50 L720 30 L900 30 L920 10 L1100 10 L1120 30 L1200 30' stroke='%23d4a84b' stroke-width='2' fill='none'/%3E%3C/svg%3E") center no-repeat;
+  background-size: 100% auto;
+}
+
+.circuitDotGold {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: var(--gold-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--gold-primary), 0 0 30px var(--gold-primary);
+  animation: circuitPulseGold 2s ease-in-out infinite;
+}
+
+@keyframes circuitPulseGold {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--gold-primary), 0 0 10px var(--gold-primary);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--gold-primary), 0 0 40px var(--gold-primary);
+  }
 }
 
 .contactBg {
@@ -294,6 +309,9 @@
 
 .mapWrapper {
   margin-top: 50px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive */
@@ -316,6 +334,11 @@
 }
 
 @media (max-width: 992px) {
+  .hero {
+    margin-top: -120px;
+    padding-top: 120px;
+  }
+
   .heroContent {
     padding-left: 40px;
   }
@@ -365,10 +388,6 @@
 
   .heroGlow {
     display: none;
-  }
-
-  .scrollIndicator {
-    bottom: 80px;
   }
 
   .contactInfo {

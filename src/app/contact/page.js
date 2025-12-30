@@ -26,7 +26,7 @@ const itemVariants = {
 
 export default function ContactPage() {
   const { t, isArabic } = useLanguage();
-  const { contactInfo } = siteData;
+  const { contactInfo, contactForm } = siteData;
 
   return (
     <div className={styles.pageWrapper}>
@@ -105,38 +105,29 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <motion.div className="mb-4" whileHover={{ scale: 1.01 }}>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={t('fullName')}
-                    required
-                  />
-                </motion.div>
-                <motion.div className="mb-4" whileHover={{ scale: 1.01 }}>
-                  <input
-                    type="tel"
-                    className="form-control"
-                    placeholder={t('phoneInput')}
-                    required
-                  />
-                </motion.div>
-                <motion.div className="mb-4" whileHover={{ scale: 1.01 }}>
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder={t('emailAddress')}
-                    required
-                  />
-                </motion.div>
-                <motion.div className="mb-4" whileHover={{ scale: 1.01 }}>
-                  <textarea
-                    className="form-control"
-                    rows="5"
-                    placeholder={t('message')}
-                    required
-                  ></textarea>
-                </motion.div>
+                {contactForm.fields.map((field) => (
+                  <motion.div key={field.id} className="mb-4" whileHover={{ scale: 1.01 }}>
+                    {field.type === 'textarea' ? (
+                      <textarea
+                        id={field.id}
+                        name={field.name}
+                        className="form-control"
+                        rows={field.rows || 5}
+                        placeholder={isArabic ? field.placeholderAr : field.placeholderEn}
+                        required={field.required}
+                      ></textarea>
+                    ) : (
+                      <input
+                        id={field.id}
+                        name={field.name}
+                        type={field.type}
+                        className="form-control"
+                        placeholder={isArabic ? field.placeholderAr : field.placeholderEn}
+                        required={field.required}
+                      />
+                    )}
+                  </motion.div>
+                ))}
                 <div className={isArabic ? 'text-start' : 'text-end'}>
                   <motion.button
                     type="submit"
@@ -144,14 +135,14 @@ export default function ContactPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {t('sendMessage')}
+                    {isArabic ? contactForm.submitButtonAr : contactForm.submitButtonEn}
                   </motion.button>
                 </div>
               </motion.form>
             </div>
           </div>
 
-          {/* Map */}
+          {/* Map - Below Contact Form */}
           <motion.div
             className={styles.mapWrapper}
             initial={{ opacity: 0, y: 30 }}

@@ -214,6 +214,67 @@
       "answerAr": "موقف مجاني متاح أمام موقعنا في شرفات بارك. هناك مساحة واسعة لجميع الزوار."
     }
   ],
+  "contactForm": {
+    "fields": [
+      {
+        "id": "fullName",
+        "name": "fullName",
+        "type": "text",
+        "labelEn": "Full Name",
+        "labelAr": "الاسم الكامل",
+        "placeholderEn": "Enter your full name",
+        "placeholderAr": "أدخل اسمك الكامل",
+        "required": true,
+        "validation": {
+          "minLength": 3,
+          "maxLength": 100
+        }
+      },
+      {
+        "id": "phone",
+        "name": "phone",
+        "type": "tel",
+        "labelEn": "Phone Number",
+        "labelAr": "رقم الهاتف",
+        "placeholderEn": "Enter your phone number",
+        "placeholderAr": "أدخل رقم هاتفك",
+        "required": true,
+        "validation": {
+          "pattern": "^[+]?[(]?[0-9]{3}[)]?[-\\s.]?[0-9]{3}[-\\s.]?[0-9]{4,6}$"
+        }
+      },
+      {
+        "id": "email",
+        "name": "email",
+        "type": "email",
+        "labelEn": "Email Address",
+        "labelAr": "البريد الإلكتروني",
+        "placeholderEn": "Enter your email address",
+        "placeholderAr": "أدخل بريدك الإلكتروني",
+        "required": true,
+        "validation": {
+          "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        }
+      },
+      {
+        "id": "message",
+        "name": "message",
+        "type": "textarea",
+        "labelEn": "Message",
+        "labelAr": "الرسالة",
+        "placeholderEn": "Enter your message",
+        "placeholderAr": "أدخل رسالتك",
+        "required": true,
+        "rows": 5,
+        "validation": {
+          "minLength": 10,
+          "maxLength": 1000
+        }
+      }
+    ],
+    "submitButtonEn": "Send Message",
+    "submitButtonAr": "إرسال الرسالة"
+  },
   "contactInfo": {
     "companyNameEn": "Enigma Escape Games",
     "companyNameAr": "إنجما لغرف الهروب",
@@ -238,4 +299,3 @@
     { "platform": "tiktok", "url": "https://tiktok.com", "icon": "bi-tiktok" }
   ]
 }
-

@@ -23,21 +23,22 @@ export default function ReviewCard({ review }) {
     <motion.div
       className={styles.reviewCard}
       variants={cardVariants}
-      whileHover={{ scale: 1.03, y: -5 }}
+      whileHover={{ y: -5 }}
     >
       <div className={styles.quoteIcon}>&quot;</div>
-      <p className={styles.reviewText}>
-        {isArabic ? review.textAr : review.textEn}
-      </p>
-      <div className={styles.reviewAuthor}>
-        <img
-          src={review.image}
-          alt={review.author}
-          className={styles.authorImage}
-        />
-        <span className={styles.authorName}>{review.author}</span>
+      <div className={styles.reviewContent}>
+        <p className={styles.reviewText}>
+          {isArabic ? review.textAr : review.textEn}
+        </p>
+        <div className={styles.reviewAuthor}>
+          <img
+            src={review.image}
+            alt={review.author}
+            className={styles.authorImage}
+          />
+          <span className={styles.authorName}>{review.author}</span>
+        </div>
       </div>
     </motion.div>
   );
 }
-

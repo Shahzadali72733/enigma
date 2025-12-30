@@ -37,7 +37,7 @@ export default function Home() {
   const heroOpacity = useTransform(heroProgress, [0, 0.5], [1, 0]);
   const contactBgY = useTransform(contactProgress, [0, 1], [0, -100]);
 
-  const { contactInfo } = siteData;
+  const { contactInfo, contactForm } = siteData;
 
   return (
     <>
@@ -46,31 +46,33 @@ export default function Home() {
         <motion.div className={styles.heroBg} style={{ y: heroY }}></motion.div>
         <div className={styles.heroOverlay}></div>
 
-        <motion.div
-          className={styles.heroContent}
-          style={{ opacity: heroOpacity }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
-          <motion.h1
-            className={styles.heroTitle}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+        <div className="container">
+          <motion.div
+            className={styles.heroContent}
+            style={{ opacity: heroOpacity }}
+            initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
-            <span className={styles.heroNumber}>60</span>
-            <span className={styles.heroMinutes}>{t('minutes')}</span>
-          </motion.h1>
-          <motion.p
-            className={styles.heroSubtitle}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            {t('heroSubtitle')}
-          </motion.p>
-        </motion.div>
+            <motion.h1
+              className={styles.heroTitle}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <span className={styles.heroNumber}>60</span>
+              <span className={styles.heroMinutes}>{t('minutes')}</span>
+            </motion.h1>
+            <motion.p
+              className={styles.heroSubtitle}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              {t('heroSubtitle')}
+            </motion.p>
+          </motion.div>
+        </div>
 
         <motion.div
           className={styles.heroGlow}
@@ -85,16 +87,7 @@ export default function Home() {
           }}
         ></motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className={styles.scrollIndicator}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          <i className="bi bi-chevron-double-down"></i>
-        </motion.div>
-
-        {/* Circuit Divider at bottom of hero */}
+        {/* Circuit Divider - White color */}
         <div className={styles.heroCircuitDivider}>
           <div className={styles.circuitLine}></div>
           <div className={styles.circuitDot}></div>
@@ -146,16 +139,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section
-        className={`section-padding ${styles.contactSection}`}
-        ref={contactRef}
-      >
-        <motion.div
-          className={styles.contactBg}
-          style={{ y: contactBgY }}
-        ></motion.div>
+      {/* Contact Section with Circuit Divider Above - Home Page Only */}
+      <section className={styles.contactSection} ref={contactRef}>
+        {/* Circuit Divider Above Contact */}
+        <div className={styles.contactCircuitDivider}>
+          <div className={styles.circuitLineGold}></div>
+          <div className={styles.circuitDotGold}></div>
+        </div>
+
+        <motion.div className={styles.contactBg} style={{ y: contactBgY }}></motion.div>
         <div className={styles.contactOverlay}></div>
+
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.h2
             className="section-title"
@@ -242,38 +236,29 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <div className="mb-4">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={t('fullName')}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <input
-                    type="tel"
-                    className="form-control"
-                    placeholder={t('phoneInput')}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder={t('emailAddress')}
-                    required
-                  />
-                </div>
-                <div className="mb-4">
-                  <textarea
-                    className="form-control"
-                    rows="4"
-                    placeholder={t('message')}
-                    required
-                  ></textarea>
-                </div>
+                {contactForm.fields.map((field) => (
+                  <div key={field.id} className="mb-4">
+                    {field.type === 'textarea' ? (
+                      <textarea
+                        id={field.id}
+                        name={field.name}
+                        className="form-control"
+                        rows={field.rows}
+                        placeholder={isArabic ? field.placeholderAr : field.placeholderEn}
+                        required={field.required}
+                      ></textarea>
+                    ) : (
+                      <input
+                        id={field.id}
+                        name={field.name}
+                        type={field.type}
+                        className="form-control"
+                        placeholder={isArabic ? field.placeholderAr : field.placeholderEn}
+                        required={field.required}
+                      />
+                    )}
+                  </div>
+                ))}
                 <div className={isArabic ? 'text-start' : 'text-end'}>
                   <motion.button
                     type="submit"
@@ -281,14 +266,14 @@ export default function Home() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {t('sendMessage')}
+                    {isArabic ? contactForm.submitButtonAr : contactForm.submitButtonEn}
                   </motion.button>
                 </div>
               </motion.form>
             </div>
           </div>
 
-          {/* Map */}
+          {/* Map - Below the form */}
           <motion.div
             className={styles.mapWrapper}
             initial={{ opacity: 0, y: 30 }}
@@ -299,7 +284,7 @@ export default function Home() {
             <iframe
               src={contactInfo.mapUrl}
               width="100%"
-              height="300"
+              height="350"
               style={{ border: 0, borderRadius: '10px' }}
               allowFullScreen=""
               loading="lazy"
