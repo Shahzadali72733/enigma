@@ -1,19 +1,11 @@
 .footer {
-  background: linear-gradient(180deg, var(--dark-bg) 0%, #050505 100%);
+  background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
   position: relative;
   overflow: hidden;
 }
 
 .footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('https://picsum.photos/seed/footerbg/1920/600') center/cover no-repeat fixed;
-  opacity: 0.1;
-  z-index: 0;
+  display: none;
 }
 
 .footer > * {
@@ -129,9 +121,23 @@
   direction: rtl;
 }
 
+@media (max-width: 992px) {
+  .logoText img {
+    width: 180px;
+  }
+
+  .logoSection {
+    padding: 25px 0;
+  }
+}
+
 @media (max-width: 768px) {
   .logoText img {
     width: 160px;
+  }
+
+  .logoSection {
+    padding: 20px 0;
   }
 
   .socialIcons {
@@ -142,5 +148,55 @@
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
+  }
+
+  .dividerLine {
+    margin: 15px auto;
+    max-width: 90%;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .logoText img {
+    width: 140px;
+  }
+
+  .logoSection {
+    padding: 15px 0;
+  }
+
+  .socialIcons {
+    gap: 15px;
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoText img {
+    width: 120px;
+  }
+
+  .socialIcons {
+    gap: 12px;
+  }
+
+  .socialLink {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
   }
 }

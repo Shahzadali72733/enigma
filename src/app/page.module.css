@@ -175,23 +175,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 150px;
-  background: linear-gradient(135deg, rgba(128, 0, 128, 0.3) 0%, rgba(255, 0, 128, 0.2) 100%);
-  border: 1px solid rgba(128, 0, 128, 0.5);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  margin-top: 50px;
+  min-height: 350px;
+  background: url('../images/New Project (4).png') center/cover no-repeat;
+  border: 1px solid var(--dark-border);
+  border-radius: 15px;
+  transition: all 0.4s ease;
+  margin-top: 30px;
+  position: relative;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.comingSoon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
 }
 
 .comingSoon:hover {
-  border-color: rgba(128, 0, 128, 0.8);
+  border-color: var(--gold-primary);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 168, 75, 0.3);
+  transform: translateY(-5px);
+}
+
+.comingSoonContent {
+  position: relative;
+  z-index: 10;
 }
 
 .comingSoonContent h3 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
+  font-family: 'Knife Fight Ballet', 'Knife Fight', fantasy, cursive;
+  font-size: 3rem;
+  color: var(--gold-primary);
+  text-shadow: 0 0 20px rgba(212, 168, 75, 0.5);
+  letter-spacing: 2px;
+  margin: 0;
+  text-align: center;
 }
 
 /* Contact Section - Home Page Only */
@@ -199,6 +223,7 @@
   position: relative;
   overflow: hidden;
   padding: 0 0 80px 0;
+  background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
 }
 
 /* Contact Circuit Divider - Gold - Home Page Only */
@@ -242,20 +267,15 @@
 
 .contactBg {
   position: absolute;
-  top: -20%;
-  left: 0;
-  right: 0;
-  height: 140%;
-  background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
-}
-
-.contactOverlay {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 10, 0.92);
+  background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
+}
+
+.contactOverlay {
+  display: none;
 }
 
 .contactInfo {
@@ -308,10 +328,17 @@
 }
 
 .mapWrapper {
-  margin-top: 50px;
+  margin: 50px 20px 20px 20px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 3px solid #ffffff;
+  padding: 20px;
+  background: transparent;
+}
+
+.mapWrapper iframe {
+  border-radius: 10px;
 }
 
 /* Responsive */
@@ -331,12 +358,17 @@
   .heroMinutes {
     font-size: 2.5rem;
   }
+
+  .roomsList {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 992px) {
   .hero {
     margin-top: -120px;
     padding-top: 120px;
+    min-height: 500px;
   }
 
   .heroContent {
@@ -351,12 +383,21 @@
     width: 300px;
     height: 300px;
   }
+
+  .roomsList {
+    padding: 0 15px;
+  }
+
+  .contactSection {
+    padding: 0 0 60px 0;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
     justify-content: center;
     text-align: center;
+    min-height: 450px;
   }
 
   .heroContent {
@@ -390,16 +431,43 @@
     display: none;
   }
 
+  .roomsSection {
+    padding: 40px 0;
+  }
+
+  .roomsList {
+    padding: 0 10px;
+  }
+
   .contactInfo {
     padding-right: 0;
+    margin-bottom: 30px;
   }
 
   .contactForm {
     padding: 20px;
   }
+
+  .contactItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .mapWrapper {
+    margin-top: 30px;
+  }
+
+  .mapWrapper iframe {
+    height: 250px;
+  }
 }
 
 @media (max-width: 576px) {
+  .hero {
+    min-height: 400px;
+  }
+
   .heroNumber {
     font-size: 4.5rem;
   }
@@ -412,5 +480,55 @@
   .heroSubtitle {
     font-size: 0.9rem;
     letter-spacing: 3px;
+  }
+
+  .roomsSection {
+    padding: 30px 0;
+  }
+
+  .contactSection {
+    padding: 0 0 40px 0;
+  }
+
+  .contactCircuitDivider {
+    height: 40px;
+    margin-bottom: 40px;
+  }
+
+  .circuitLineGold {
+    height: 40px;
+  }
+
+  .contactTitle {
+    font-size: 1.1rem;
+  }
+
+  .contactItem h5 {
+    font-size: 0.9rem;
+  }
+
+  .contactItem p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroNumber {
+    font-size: 3.5rem;
+  }
+
+  .heroMinutes {
+    font-size: 1rem;
+    letter-spacing: 4px;
+  }
+
+  .heroSubtitle {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-top: 15px;
+  }
+
+  .contactForm {
+    padding: 15px;
   }
 }

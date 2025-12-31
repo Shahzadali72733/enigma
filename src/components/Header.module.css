@@ -27,18 +27,31 @@
 }
 
 .bookBtn {
-  font-size: 0.75rem;
+  font-size: 1.25rem;
   padding: 10px 25px;
-  animation: pulse 2s ease-in-out infinite;
+  background: transparent !important;
+  border: none !important;
+  color: var(--gold-primary);
+  text-shadow: 0 0 10px rgba(212, 168, 75, 0.8), 0 0 20px rgba(212, 168, 75, 0.6), 0 0 30px rgba(212, 168, 75, 0.4);
+  animation: glowPulse 2s ease-in-out infinite;
   flex-shrink: 0;
+  font-weight: 700;
+  letter-spacing: 2px;
 }
 
-@keyframes pulse {
+.bookBtn:hover {
+  background: transparent !important;
+  color: var(--gold-light);
+  text-shadow: 0 0 15px rgba(212, 168, 75, 1), 0 0 30px rgba(212, 168, 75, 0.8), 0 0 45px rgba(212, 168, 75, 0.6);
+  transform: scale(1.05);
+}
+
+@keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(212, 168, 75, 0.3);
+    text-shadow: 0 0 10px rgba(212, 168, 75, 0.8), 0 0 20px rgba(212, 168, 75, 0.6), 0 0 30px rgba(212, 168, 75, 0.4);
   }
   50% {
-    box-shadow: 0 0 20px rgba(212, 168, 75, 0.6);
+    text-shadow: 0 0 20px rgba(212, 168, 75, 1), 0 0 40px rgba(212, 168, 75, 0.8), 0 0 60px rgba(212, 168, 75, 0.6);
   }
 }
 
@@ -377,8 +390,9 @@
 
 @media (max-width: 576px) {
   .bookBtn {
-    font-size: 0.65rem;
+    font-size: 1rem;
     padding: 8px 15px;
+    letter-spacing: 1px;
   }
 
   .logoWrapper img {

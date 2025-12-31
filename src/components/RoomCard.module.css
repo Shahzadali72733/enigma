@@ -3,9 +3,37 @@
   border: 1px solid var(--dark-border);
   border-radius: 15px;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   margin-top: 30px;
+  background-image: url('../images/New Project (4).png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.roomCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.roomCard:hover::after {
+  left: 100%;
 }
 
 .roomCard::before {
@@ -25,9 +53,8 @@
 }
 
 .roomCard:hover {
-  border-color: var(--gold-primary);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
-  transform: translateY(-5px);
+  border-color: var(--room-color, var(--gold-primary));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 30px var(--room-color, rgba(212, 168, 75, 0.3));
 }
 
 .roomImageWrapper {
@@ -44,7 +71,8 @@
 }
 
 .roomCard:hover .roomImage {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  filter: brightness(1.1) saturate(1.2);
 }
 
 .roomOverlay {
@@ -58,24 +86,36 @@
 }
 
 .roomName {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Knife Fight Ballet', 'Knife Fight', fantasy, cursive;
   font-size: 3.7rem;
   font-weight: 700;
-  color: var(--gold-primary);
+  color: var(--room-color, var(--gold-primary));
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   margin-bottom: 70px;
+  letter-spacing: 2px;
+  transition: all 0.3s ease;
+}
+
+.roomCard:hover .roomName {
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    0 0 20px var(--room-color, var(--gold-primary)),
+    0 0 40px var(--room-color, var(--gold-primary));
+  transform: scale(1.02);
 }
 
 .roomSubtitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.8rem;
+  font-family: 'Knife Fight Ballet', 'Knife Fight', fantasy, cursive;
+  font-size: 0.9rem;
   color: var(--gold-primary);
   opacity: 0.8;
   display: block;
   margin-bottom: 8px;
+  letter-spacing: 1px;
 }
 
 .roomNameAr {
+  font-family: 'Rajdhani', sans-serif;
   font-size: 4.15rem;
   color: #ffffff;
   opacity: 0.9;
@@ -104,8 +144,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 18px;
-  /* background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(4px); */
   z-index: 2;
 }
 
@@ -156,9 +194,37 @@
   margin-right: 3px;
 }
 
+@media (max-width: 992px) {
+  .roomImageWrapper {
+    height: 300px;
+  }
+
+  .roomName {
+    font-size: 3.2rem;
+    margin-bottom: 60px;
+  }
+
+  .roomNameAr {
+    font-size: 3.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .roomImageWrapper {
-    height: 180px;
+    height: 250px;
+  }
+
+  .roomName {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  .roomNameAr {
+    font-size: 2.8rem;
+  }
+
+  .roomOverlay {
+    padding: 15px 18px 50px 18px;
   }
 
   .roomDetails {
@@ -170,6 +236,11 @@
 
   .roomInfo {
     gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .roomInfo span {
+    font-size: 1rem;
   }
 
   .difficulty {
@@ -180,19 +251,84 @@
   [dir="rtl"] .difficulty {
     text-align: right;
   }
+
+  .roomBookBtn {
+    font-size: 0.7rem;
+    padding: 8px 20px;
+  }
 }
 
 @media (max-width: 576px) {
   .roomImageWrapper {
-    height: 160px;
+    height: 220px;
   }
 
   .roomName {
-    font-size: 4.4rem;
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .roomNameAr {
+    font-size: 2.3rem;
+  }
+
+  .roomOverlay {
+    padding: 12px 15px 45px 15px;
+  }
+
+  .roomSubtitle {
+    font-size: 0.7rem;
+    margin-bottom: 5px;
   }
 
   .roomBookBtn {
     font-size: 0.65rem;
     padding: 8px 18px;
+    top: 12px;
+    right: 12px;
+  }
+
+  [dir="rtl"] .roomBookBtn {
+    left: 12px;
+  }
+
+  .roomInfo span {
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+
+  .roomInfo i {
+    font-size: 0.9rem;
+  }
+
+  .difficulty span {
+    font-size: 1.1rem;
+  }
+
+  .difficultyStars i {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .roomImageWrapper {
+    height: 200px;
+  }
+
+  .roomName {
+    font-size: 1.6rem;
+    margin-bottom: 35px;
+  }
+
+  .roomNameAr {
+    font-size: 1.9rem;
+  }
+
+  .roomOverlay {
+    padding: 10px 12px 40px 12px;
+  }
+
+  .roomCard {
+    margin-top: 20px;
   }
 }

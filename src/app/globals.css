@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/knife-fight-ballet');
 
 :root {
   /* Colors */
@@ -23,6 +24,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 140px;
+}
+
+html, body {
+  overscroll-behavior: none;
 }
 
 body {
@@ -103,20 +109,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Form Styles */
 .form-dark .form-control {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--dark-border);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--gold-primary);
   color: var(--text-light);
-  padding: 15px;
+  padding: 15px 5px;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 0;
   transition: all 0.3s ease;
 }
 
 .form-dark .form-control:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 0 0.2rem rgba(212, 168, 75, 0.15);
+  background: transparent;
+  border-bottom: 3px solid var(--gold-light);
+  box-shadow: 0 4px 8px rgba(212, 168, 75, 0.3);
   outline: none;
   color: var(--text-light);
 }
@@ -202,13 +209,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive Typography */
+@media (max-width: 992px) {
+  body {
+    padding-top: 120px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --section-padding: 60px;
   }
 
+  body {
+    padding-top: 100px;
+  }
+
   .section-title {
     font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .btn {
+    padding: 10px 28px;
+    font-size: 0.9rem;
+  }
+
+  .form-dark .form-control {
+    padding: 12px;
+    font-size: 0.95rem;
   }
 }
 
@@ -217,7 +250,39 @@ h1, h2, h3, h4, h5, h6 {
     --section-padding: 40px;
   }
 
+  body {
+    padding-top: 90px;
+  }
+
   .section-title {
     font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    padding: 10px 25px;
+    font-size: 0.85rem;
+  }
+
+  .form-dark .form-control {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding: 30px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+  }
+
+  .btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
   }
 }

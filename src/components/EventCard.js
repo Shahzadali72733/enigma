@@ -37,13 +37,12 @@ export default function EventCard({ event }) {
             {isArabic ? event.titleAr : event.titleEn}
           </h3>
         </div>
-      </div>
-      <div className={styles.eventContent}>
-        <p className={styles.eventDescription}>
-          {isArabic ? event.descriptionAr : event.descriptionEn}
-        </p>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Link href="/contact" className="btn btn-outline-gold">
+        <motion.div 
+          className={styles.eventBookBtn}
+          whileHover={{ scale: 1.05 }} 
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link href="/contact" className="btn btn-gold">
             {t('bookNow')}
           </Link>
         </motion.div>

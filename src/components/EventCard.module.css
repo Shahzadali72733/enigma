@@ -1,19 +1,19 @@
 .eventCard {
-  background: rgba(26, 26, 26, 0.9);
-  border: 1px solid var(--dark-border);
+  background: transparent;
+  border: 2px solid var(--gold-primary);
   border-radius: 15px;
   overflow: hidden;
   transition: all 0.4s ease;
 }
 
 .eventCard:hover {
-  border-color: var(--gold-primary);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 30px rgba(212, 168, 75, 0.3);
 }
 
 .eventImageWrapper {
   position: relative;
-  height: 250px;
+  height: 220px;
   overflow: hidden;
 }
 
@@ -33,41 +33,43 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 25px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
+  padding: 20px 25px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
 }
 
 .eventTitle {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.6rem;
+  font-family: 'Knife Fight Ballet', 'Knife Fight', fantasy, cursive;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--gold-primary);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  margin: 0;
 }
 
-.eventContent {
-  padding: 30px;
+.eventBookBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
 }
 
-.eventDescription {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 25px;
+.eventBookBtn .btn {
+  font-size: 0.75rem;
+  padding: 8px 20px;
 }
 
 @media (max-width: 768px) {
   .eventImageWrapper {
-    height: 200px;
+    height: 180px;
   }
 
   .eventTitle {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
-  .eventContent {
-    padding: 25px;
+  .eventBookBtn .btn {
+    font-size: 0.7rem;
+    padding: 6px 16px;
   }
 }
 

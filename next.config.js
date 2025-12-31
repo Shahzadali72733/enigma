@@ -2,8 +2,8 @@
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '/enigma-escape-games',
-  assetPrefix: '/enigma-escape-games/',
+  // basePath: '/enigma-escape-games',
+  // assetPrefix: '/enigma-escape-games/',
   images: {
     unoptimized: true,
   },

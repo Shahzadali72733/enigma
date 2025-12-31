@@ -45,7 +45,8 @@
 
 /* Reviews Section */
 .reviewsSection {
-  background: var(--dark-bg);
+  background: url('../../../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
+  position: relative;
 }
 
 .reviewsGrid {

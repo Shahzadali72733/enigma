@@ -7,12 +7,17 @@ import styles from './RoomCard.module.css';
 import Image from 'next/image';
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { 
+    opacity: 0, 
+    y: 50,
+    scale: 0.95,
+  },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
-      duration: 0.6,
+      duration: 0.5,
       ease: 'easeOut',
     },
   },
@@ -32,8 +37,9 @@ export default function RoomCard({ room, showDetails = true }) {
       className={styles.roomCard}
       variants={cardVariants}
       whileHover={{
-        scale: 1.02,
-        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+        scale: 1.03,
+        y: -5,
+        transition: { duration: 0.3 }
       }}
       style={{ '--room-color': room.color }}
     >

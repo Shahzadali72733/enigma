@@ -121,7 +121,7 @@
       "id": 1,
       "titleEn": "Parties / Birthday",
       "titleAr": "حفلات / أعياد الميلاد",
-      "image": "https://picsum.photos/seed/party/800/400",
+      "image": "/New Project (5).png",
       "descriptionEn": "Celebrate your special day with an unforgettable escape room experience!",
       "descriptionAr": "احتفل بيومك الخاص مع تجربة غرفة هروب لا تُنسى!"
     },
@@ -129,7 +129,7 @@
       "id": 2,
       "titleEn": "Corporate / Team Building",
       "titleAr": "الشركات / بناء الفريق",
-      "image": "https://picsum.photos/seed/corporate/800/400",
+      "image": "/New Project (6).png",
       "descriptionEn": "Build stronger teams through collaborative puzzle-solving adventures.",
       "descriptionAr": "ابنِ فرقاً أقوى من خلال مغامرات حل الألغاز التعاونية."
     },
@@ -137,7 +137,7 @@
       "id": 3,
       "titleEn": "External Events / School Trips",
       "titleAr": "الفعاليات الخارجية / الرحلات المدرسية",
-      "image": "https://picsum.photos/seed/school/800/400",
+      "image": "/New Project (7).png",
       "descriptionEn": "Educational and exciting experiences for students of all ages.",
       "descriptionAr": "تجارب تعليمية ومثيرة للطلاب من جميع الأعمار."
     }

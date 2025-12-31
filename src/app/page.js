@@ -13,7 +13,45 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const titleVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: -50,
+    scale: 0.9,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: 'spring',
+      stiffness: 150,
+      damping: 15,
+    },
+  },
+};
+
+const comingSoonVariants = {
+  hidden: { 
+    opacity: 0, 
+    scale: 0.5,
+    rotateY: 90,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    rotateY: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 100,
+      damping: 12,
+      duration: 0.8,
     },
   },
 };
@@ -56,12 +94,36 @@ export default function Home() {
           >
             <motion.h1
               className={styles.heroTitle}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              initial={{ opacity: 0, scale: 0.5, rotateX: 45 }}
+              animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ 
+                type: 'spring',
+                stiffness: 100,
+                damping: 10,
+                delay: 0.5 
+              }}
             >
-              <span className={styles.heroNumber}>60</span>
-              <span className={styles.heroMinutes}>{t('minutes')}</span>
+              <motion.span 
+                className={styles.heroNumber}
+                animate={{ 
+                  textShadow: [
+                    '0 0 30px rgba(252, 196, 3, 0.5)',
+                    '0 0 60px rgba(252, 196, 3, 0.8)',
+                    '0 0 30px rgba(252, 196, 3, 0.5)'
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                60
+              </motion.span>
+              <motion.span 
+                className={styles.heroMinutes}
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                {t('minutes')}
+              </motion.span>
             </motion.h1>
             <motion.p
               className={styles.heroSubtitle}
@@ -99,11 +161,11 @@ export default function Home() {
         <div className="container">
          <motion.h2
   className="section-title"
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
+  variants={titleVariants}
+  initial="hidden"
+  whileInView="visible"
   viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  style={{ position: 'relative', zIndex: 2 }}  // Ensure position and z-index are set
+  style={{ position: 'relative', zIndex: 2 }}
 >
   {t('ourRooms')}
 </motion.h2>
@@ -123,15 +185,30 @@ export default function Home() {
             {/* Coming Soon Card */}
             <motion.div
               className={`${styles.roomCard} ${styles.comingSoon}`}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={comingSoonVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ 
+                scale: 1.05,
+                y: -10,
+                boxShadow: '0 25px 50px rgba(128, 0, 128, 0.4), 0 0 40px rgba(255, 0, 128, 0.3)',
+                transition: { type: 'spring', stiffness: 400, damping: 15 }
+              }}
+              whileTap={{ scale: 0.98 }}
             >
               <div className={styles.comingSoonContent}>
                 <motion.h3
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={{ 
+                    opacity: [0.6, 1, 0.6],
+                    scale: [1, 1.05, 1],
+                    textShadow: [
+                      '0 0 20px rgba(212, 168, 75, 0.5)',
+                      '0 0 40px rgba(212, 168, 75, 0.8)',
+                      '0 0 20px rgba(212, 168, 75, 0.5)'
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
                 >
                   {t('comingSoon')}
                 </motion.h3>
@@ -155,10 +232,14 @@ export default function Home() {
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.h2
             className="section-title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ 
+              type: 'spring',
+              stiffness: 150,
+              damping: 15,
+            }}
           >
             {t('contactUs')}
           </motion.h2>
