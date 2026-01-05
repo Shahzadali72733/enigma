@@ -80,7 +80,7 @@
   font-family: 'Rajdhani', sans-serif;
   font-size: 1.2rem;
   letter-spacing: 5px;
-  color: rgba(255, 255, 255, 0.7); /* Slightly transparent white */
+  color: #ffffff;
   margin-top: 20px;
 }
 
@@ -223,13 +223,27 @@
   overflow: hidden;
   padding: 0 0 80px 0;
   background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
+  background-attachment: fixed;
+}
+
+/* White Divider SVG above Contact Us heading */
+.contactDivider {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  display: block;
+}
+
+.contactDivider svg {
+  width: 100%;
+  height: auto;
 }
 
 /* Contact Circuit Divider - Gold - Home Page Only */
 .contactCircuitDivider {
   position: relative;
   height: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 
 .circuitLineGold {
@@ -238,7 +252,7 @@
   left: 0;
   right: 0;
   height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 L100 30 L120 10 L300 10 L320 30 L500 30 L520 50 L700 50 L720 30 L900 30 L920 10 L1100 10 L1120 30 L1200 30' stroke='%23d4a84b' stroke-width='2' fill='none'/%3E%3C/svg%3E") center no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60'%3E%3Cpath d='M0 30 L100 30 L120 10 L300 10 L320 30 L500 30 L520 50 L700 50 L720 30 L900 30 L920 10 L1100 10 L1120 30 L1200 30' stroke='%23ffffff' stroke-width='2' fill='none'/%3E%3C/svg%3E") center no-repeat;
   background-size: 100% auto;
 }
 
@@ -249,28 +263,23 @@
   transform: translateY(-50%);
   width: 8px;
   height: 8px;
-  background: var(--gold-primary);
+  background: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 0 15px var(--gold-primary), 0 0 30px var(--gold-primary);
+  box-shadow: 0 0 15px #ffffff, 0 0 30px #ffffff;
   animation: circuitPulseGold 2s ease-in-out infinite;
 }
 
 @keyframes circuitPulseGold {
   0%, 100% {
-    box-shadow: 0 0 5px var(--gold-primary), 0 0 10px var(--gold-primary);
+    box-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff;
   }
   50% {
-    box-shadow: 0 0 20px var(--gold-primary), 0 0 40px var(--gold-primary);
+    box-shadow: 0 0 20px #ffffff, 0 0 40px #ffffff;
   }
 }
 
 .contactBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('../images/Contact-Us_Background-min-1.png') center/cover no-repeat;
+  display: none;
 }
 
 .contactOverlay {
@@ -321,23 +330,30 @@
 }
 
 .contactForm {
-  background: rgba(26, 26, 26, 0.5);
+  background: transparent;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 0;
+}
+
+.contactForm .form-control {
+  border: none;
+  border-bottom: 1px solid var(--gold-primary);
+  border-radius: 0;
 }
 
 .mapWrapper {
-  margin: 50px 20px 20px 20px;
-  border-radius: 15px;
+  margin: 50px 20px 0 20px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border: 3px solid #ffffff;
-  padding: 20px;
+  box-shadow: none;
+  border: 2px solid #ffffff;
+  padding: 30px;
   background: transparent;
 }
 
 .mapWrapper iframe {
-  border-radius: 10px;
+  border-radius: 0;
+  display: block;
 }
 
 /* Responsive */
@@ -424,6 +440,7 @@
   .heroMinutes {
     font-size: 1.5rem;
     letter-spacing: 8px;
+    margin-top: 10px;
   }
 
   .heroGlow {
@@ -436,6 +453,14 @@
 
   .roomsList {
     padding: 0 10px;
+  }
+
+  .comingSoon {
+    min-height: 280px;
+  }
+
+  .comingSoonContent h3 {
+    font-size: 2.5rem;
   }
 
   .contactInfo {
@@ -454,7 +479,8 @@
   }
 
   .mapWrapper {
-    margin-top: 30px;
+    margin: 30px 10px 0 10px;
+    padding: 20px;
   }
 
   .mapWrapper iframe {
@@ -474,6 +500,7 @@
   .heroMinutes {
     font-size: 1.2rem;
     letter-spacing: 6px;
+    margin-top: 15px;
   }
 
   .heroSubtitle {
@@ -483,6 +510,14 @@
 
   .roomsSection {
     padding: 30px 0;
+  }
+
+  .comingSoon {
+    min-height: 220px;
+  }
+
+  .comingSoonContent h3 {
+    font-size: 2rem;
   }
 
   .contactSection {
@@ -519,6 +554,7 @@
   .heroMinutes {
     font-size: 1rem;
     letter-spacing: 4px;
+    margin-top: 15px;
   }
 
   .heroSubtitle {
@@ -527,7 +563,24 @@
     margin-top: 15px;
   }
 
+  .comingSoon {
+    min-height: 180px;
+  }
+
+  .comingSoonContent h3 {
+    font-size: 1.6rem;
+  }
+
   .contactForm {
     padding: 15px;
+  }
+
+  .mapWrapper {
+    margin: 20px 5px 0 5px;
+    padding: 15px;
+  }
+
+  .mapWrapper iframe {
+    height: 200px;
   }
 }

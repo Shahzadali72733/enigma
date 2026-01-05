@@ -43,24 +43,33 @@ export default function RoomCard({ room, showDetails = true, index = 0 }) {
           className={styles.roomImage}
         />
         <div className={styles.roomOverlay}>
-          <h3 className={styles.roomName}>
-            {isArabic ? room.nameAr : room.nameEn}
-          </h3>
-          {room.subtitleEn && !isArabic && (
-            <span className={styles.roomSubtitle}>{room.subtitleEn}</span>
-          )}
-          <p className={styles.roomNameAr}>
-            {isArabic ? room.nameEn : room.nameAr}
-          </p>
+          {/* Top: English title and Book Now button */}
+          <div className={styles.roomHeader}>
+            <div className={styles.roomTitles}>
+              <h3 className={styles.roomName}>
+                {room.nameEn}
+              </h3>
+              {room.subtitleEn && (
+                <span className={styles.roomSubtitle}>{room.subtitleEn}</span>
+              )}
+            </div>
+            <a 
+              href={room.bookingUrl || 'https://bookeo.com/enigmaescapesa'} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={styles.roomBookBtn}
+            >
+              {t('bookNow')}
+            </a>
+          </div>
+          
+          {/* Bottom: Arabic title */}
+          <div className={styles.roomArabicSection}>
+            <p className={styles.roomNameAr}>
+              {room.nameAr}
+            </p>
+          </div>
         </div>
-        <a 
-          href={room.bookingUrl || 'https://bookeo.com/enigmaescapesa'} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className={`btn btn-gold ${styles.roomBookBtn}`}
-        >
-          {t('bookNow')}
-        </a>
 
         {showDetails && (
           <div className={styles.roomDetails}>
@@ -106,8 +115,6 @@ export default function RoomCard({ room, showDetails = true, index = 0 }) {
           </div>
         )}
       </div>
-
-      
     </motion.div>
   );
 }

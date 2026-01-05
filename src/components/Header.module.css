@@ -29,30 +29,22 @@
 .bookBtn {
   font-size: 1.25rem;
   padding: 10px 25px;
-  background: transparent !important;
-  border: none !important;
+  background: transparent;
+  border: none;
   color: var(--gold-primary);
-  text-shadow: 0 0 10px rgba(212, 168, 75, 0.8), 0 0 20px rgba(212, 168, 75, 0.6), 0 0 30px rgba(212, 168, 75, 0.4);
-  animation: glowPulse 2s ease-in-out infinite;
   flex-shrink: 0;
   font-weight: 700;
   letter-spacing: 2px;
+  transition: all 0.3s ease;
+  border-radius: 50px;
 }
 
 .bookBtn:hover {
-  background: transparent !important;
-  color: var(--gold-light);
-  text-shadow: 0 0 15px rgba(212, 168, 75, 1), 0 0 30px rgba(212, 168, 75, 0.8), 0 0 45px rgba(212, 168, 75, 0.6);
+  background: var(--gold-primary);
+  color: var(--dark-bg);
+  border: 2px solid var(--gold-primary);
   transform: scale(1.05);
-}
-
-@keyframes glowPulse {
-  0%, 100% {
-    text-shadow: 0 0 10px rgba(212, 168, 75, 0.8), 0 0 20px rgba(212, 168, 75, 0.6), 0 0 30px rgba(212, 168, 75, 0.4);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(212, 168, 75, 1), 0 0 40px rgba(212, 168, 75, 0.8), 0 0 60px rgba(212, 168, 75, 0.6);
-  }
+  box-shadow: 0 5px 20px rgba(212, 168, 75, 0.4);
 }
 
 /* Logo - Center */
@@ -77,7 +69,7 @@
 .langSelector {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: #ffffff;
   font-size: 0.85rem;
   cursor: pointer;
@@ -92,20 +84,21 @@
   background: rgba(212, 168, 75, 0.1);
 }
 
-.flagsContainer {
-  display: flex;
-  gap: 5px;
+.activeFlag {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(212, 168, 75, 0.6));
+}
+
+.langText {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
 .flag {
   font-size: 1.3rem;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-}
-
-.flag.activeFlag {
-  opacity: 1;
-  filter: drop-shadow(0 0 8px rgba(212, 168, 75, 0.6));
 }
 
 .chevron {
@@ -193,7 +186,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 0;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -210,7 +203,7 @@
   letter-spacing: 1px;
   color: #ffffff;
   text-decoration: none;
-  padding: 10px 25px;
+  padding: 10px 15px;
   transition: all 0.3s ease;
   position: relative;
   display: block;
@@ -228,8 +221,8 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: 25px;
-  right: 25px;
+  left: 15px;
+  right: 15px;
   height: 2px;
   background: var(--gold-primary);
 }
@@ -335,7 +328,7 @@
   }
 
   .bottomRow.mobileOpen {
-    max-height: 400px;
+    max-height: 500px;
     opacity: 1;
   }
 
@@ -390,24 +383,44 @@
 
 @media (max-width: 576px) {
   .bookBtn {
-    font-size: 1rem;
-    padding: 8px 15px;
+    font-size: 0.9rem;
+    padding: 6px 12px;
     letter-spacing: 1px;
   }
 
   .logoWrapper img {
-    width: 120px;
+    width: 110px;
   }
 
   .langSelector {
-    right: 50px;
+    right: 45px;
+    gap: 5px;
   }
 
-  .flagsContainer {
-    gap: 3px;
+  .langText {
+    display: none;
+  }
+
+  .activeFlag {
+    font-size: 1.3rem;
   }
 
   .flag {
     font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bookBtn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .logoWrapper img {
+    width: 100px;
+  }
+
+  .langSelector {
+    right: 40px;
   }
 }

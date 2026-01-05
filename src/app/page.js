@@ -59,14 +59,8 @@ export default function Home() {
     offset: ['start start', 'end start'],
   });
 
-  const { scrollYProgress: contactProgress } = useScroll({
-    target: contactRef,
-    offset: ['start end', 'end start'],
-  });
-
   const heroY = useTransform(heroProgress, [0, 1], [0, 200]);
   const heroOpacity = useTransform(heroProgress, [0, 0.5], [1, 0]);
-  const contactBgY = useTransform(contactProgress, [0, 1], [0, -100]);
 
   const { contactInfo, contactForm } = siteData;
 
@@ -193,16 +187,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section with Circuit Divider Above - Home Page Only */}
+      {/* Contact Section with White Divider Above - Home Page Only */}
       <section className={styles.contactSection} ref={contactRef}>
-        {/* Circuit Divider Above Contact */}
+        {/* White Circuit Divider Above Contact */}
         <div className={styles.contactCircuitDivider}>
           <div className={styles.circuitLineGold}></div>
           <div className={styles.circuitDotGold}></div>
         </div>
-
-        <motion.div className={styles.contactBg} style={{ y: contactBgY }}></motion.div>
-        <div className={styles.contactOverlay}></div>
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
           <motion.h2
@@ -343,7 +334,7 @@ export default function Home() {
               src={contactInfo.mapUrl}
               width="100%"
               height="350"
-              style={{ border: 0, borderRadius: '10px' }}
+              style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

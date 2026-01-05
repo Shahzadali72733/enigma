@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 .form-dark .form-control {
   background: transparent;
   border: none;
-  border-bottom: 2px solid var(--gold-primary);
+  border-bottom: 1px solid var(--gold-primary);
   color: var(--text-light);
   padding: 15px 5px;
   font-family: 'Rajdhani', sans-serif;
@@ -122,8 +122,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-dark .form-control:focus {
   background: transparent;
-  border-bottom: 3px solid var(--gold-light);
-  box-shadow: 0 4px 8px rgba(212, 168, 75, 0.3);
+  border-bottom: 2px solid var(--gold-light);
+  box-shadow: 0 2px 4px rgba(212, 168, 75, 0.2);
   outline: none;
   color: var(--text-light);
 }
